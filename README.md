@@ -1,1 +1,7 @@
-# Shippable
+My approach to solve this problem is straight forward.Basically the assignment was to write a crawler that could crawl a given github url extract and display required data.
+
+The programming language I choose was python as it makes good choise for writing crawlers when used with appropriate libraries.BeautifulSoup was is the library used for this assignment as it works with most of the parser and makes it easy to search for required data.
+
+The first task after recieving an url from the user was to fetch the page and get total number of open issues.After analyzing the source code found that git is a bit tricky where it displays total number of issues open.They embed this data inside anchor tag inside and there is a nesting of span tags but the data isn't in span tag as well.Hence I extracted the anchor tag got bs4 class element which are then  converted to a string and appended to a list.From there we could split the appropriate string and then extract total number of open issues.
+
+To get the next piece of data it was important to calculate total number of pages as git displays 25 issues per page.Total_number_of_issues/25 gave the number of pages to be extracted.Then in a loop extract each page and store the time tag in a list.The time tag contains the timestamp for the every issue raised.next step was to extract each time stamp from the datetime attribute of the time tag and store them in a list.Then convert each date into date onject so that we can compare dates.Next get the current time, past 7 day timestamp using datetime.Finally compare the timestamps and  increment the count when they satisfy the appropriate condition and return the result.The html template renders the result and displays it in a tabular form.
